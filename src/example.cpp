@@ -1,4 +1,4 @@
-#include <iostream>
+#include "template_repository/example.h"
 
 int main() {
     std::cout << "Hi there!" << std::endl;
