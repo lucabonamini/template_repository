@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt -y update \
-    && apt install -y \ 
+    && apt install -y \
        ccache \
        clang-tidy \
        cppcheck \

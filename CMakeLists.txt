@@ -1,6 +1,10 @@
-icmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.15)
 
 project(template_repository)
+
+option(BUILD_TESTS "Enable compilation of tests/ folder" ON)
+option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
+
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
@@ -22,7 +26,6 @@ enable_doxygen()
 
 include(cmake/StaticAnalyzers.cmake)
 
-option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
 
 function(build_executable name)
   add_executable(${name} src/${name}.cpp)
@@ -33,3 +36,7 @@ function(build_executable name)
   )
   target_compile_features(${name} PRIVATE cxx_std_17)
 endfunction()
+
+if (${BUILD_TESTS})
+  add_subdirectory(tests)
+endif()
